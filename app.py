@@ -15,11 +15,9 @@ df['paint_color'] = df['paint_color'].fillna('unknown')
 median_by_condition = df.groupby('condition')['odometer'].median()
 
 
-# This function is responsible for assigning a value to the odometer based on the value in the
-# condition column in the same row.
-
-
 def mbc(x):
+    '''Is responsible for assigning a value to the odometer based on the value in the condition column in the same row
+    '''
     if pd.isnull(x['odometer']):
         return median_by_condition[x['condition']]
     else:
